@@ -6,7 +6,15 @@ const crypto = require("crypto");
 const { createClient } = require("@supabase/supabase-js");
 
 const app = express();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "http://localhost:4028", // your React frontend
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 const supabase = createClient(
