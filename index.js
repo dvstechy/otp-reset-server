@@ -172,6 +172,8 @@ app.post("/resetPassword", async (req, res) => {
   }
 });
 
+console.log("SENDGRID_API_KEY:", !!process.env.SENDGRID_API_KEY);
+console.log("SMTP_USER:", !!process.env.SMTP_USER);
 // ---------------------------
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`✅ OTP + Reset API running on port ${PORT}`));
