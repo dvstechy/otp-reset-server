@@ -16,7 +16,8 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.options("*", cors());
+app.options(/.*/, cors()); // <-- regex matches all routes safely in Express 5
+
 // ---------------------------
 // Supabase client
 const supabase = createClient(
