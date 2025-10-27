@@ -83,8 +83,11 @@ app.post("/sendOtp", async (req, res) => {
       await sendOtpEmail(email, otp);
     } catch (err) {
       console.error("SendGrid error:", err);
-      return res.status(500).json({ error: "Failed to send OTP email" });
-    }
+     if (err.response && err.response.body) {
+    console.error("SendGrid response body:", err.response.body);
+  }
+  return res.status(500).json({ error: "Failed to send OTP email" });
+}
 
     res.json({ message: "OTP sent successfully" });
   } catch (error) {
