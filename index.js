@@ -11,11 +11,12 @@ app.use(express.json());
 app.use(
   cors({
     origin: "http://localhost:4028",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
+app.options("*", cors());
 // ---------------------------
 // Supabase client
 const supabase = createClient(
