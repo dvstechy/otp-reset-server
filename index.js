@@ -159,7 +159,7 @@ app.post("/resetPassword", async (req, res) => {
 
     // Update Supabase Auth password
     const { error: updateError } = await adminSupabase.auth.admin.updateUserById(
-      user.id, // Make sure this is the Supabase auth ID
+      user.user_id, // Make sure this is the Supabase auth ID
       { password: newPassword }
     );
 
